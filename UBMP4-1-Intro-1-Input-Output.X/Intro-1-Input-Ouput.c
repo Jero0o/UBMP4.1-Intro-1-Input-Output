@@ -51,7 +51,22 @@ int main(void)
             LED6 = 0;
             __delay_ms(100);
         }
-        
+        // Momentary button using if structure
+        if(SW3 == 0)
+        {
+            LED4 = 1;
+        }
+        else
+        {
+            LED4 = 0;
+        }
+
+        // Momentary button using while structure
+        while(SW4 == 0)
+        {
+            LED5 = 1;
+        }
+        LED5 = 0;
         // Add code for your Program Analysis and Programming Activities here:
      
         // Activate bootloader if SW1 is pressed.
@@ -67,20 +82,21 @@ int main(void)
  * 1. How many times do the LEDs flash if SW2 is quickly pressed and released?
  *    Do the LEDs keep flashing when SW2 is held? Look at the program and
  *    explain why this happens when SW2 is held.
- * the LEDs flashes one time if SW2 is quickly pressed and released. Yes. the LEDs will keep flashing when SW2 is held
+ * the LEDs flashes four time if SW2 is quickly pressed and released. Yes, the LEDs will keep flashing when SW2 is held.
+ * This happens because the code is running on a loop until the LEDs ha the same value as SW2.
  * 2. Explain the difference between the statements: LED3 = 0; and LED3 = 1;
- *  
+ *  The difference between the two LEDs is that LED3 = 0; means its turned off and it won't flash a light while LED3 = 1; is turned on and it will flash a light.
  * 3. What voltage do you expect the microcontroller to output to LED D3 when
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
  *    when the statement LED3 = 1; runs?
- * 
+ * There would not be enough voltage to run the LED3 = 0; to flash a light and LED3 = 1; will have enough voltage to flash a light.
  *    You can confirm the output voltage with a voltmeter if you have access
  *    to one. If you tried that, did the voltage match your prediction?
  * 
  * 4. The statement 'if(SW2 == 0)' uses two equal signs, while the statement
  *    'LED3 = 1;' uses a single equal sign. What operation is performed by one
  *    equal sign? What operation is performed by two equal signs?
- * 
+ * The operation performed by one equal sign is that it assigns the value of that LED and the operation for two equal sign is that it is equivalent of that value. 
  * 5. The following program code includes instructions that write to the PORTC
  *    output latches directly. Try it by copying and pasting this code below
  *    the existing SW2 'if' structure, at the location shown by the comment.
@@ -96,7 +112,8 @@ int main(void)
  *    What happens when pushbutton SW3 is pressed? Identify at least one
  *    advantage and one disadvantage of controlling the LEDs using 'LATC' writes
  *    rather than through individual 'LEDn = x;' statements.
- * 
+ * All LED lights will turn on after its pressed and the light will rapidly flashes when held.
+ * One advantage of 'LATC' is that all four lights flashes with just little coding. One advantage would be there are no specific commands or coding on the LEDs and all LEDs act the same.
  * 6. Next, compare the operation of 'if' and 'while' structures to simulate
  *    momentary buttons. Replace the code you added in 5, above, with this code:
 
@@ -121,11 +138,12 @@ int main(void)
  * 
  *    Next, press and hold SW3 while pressing and releasing SW4. Does it work
  *    as expected?
- * 
+ * Yes it did work as expected. The LED with SW3 keeps the light on until released and the LED for SW4 also flashes while SW3 is being held.
  *    Next, try press and holding SW4 while pressing and releasing SW3. Does it
  *    work as expected? Explain the difference in operation between the 'if' and
  *    'while' structures making up the momentary button code.
- * 
+ * No it did not work as expected. 
+ * The 'if' structure specifically checks only once every cycle while the 'while' structure only interacts with none other than the 'while' coding and it keeps checking it 
  * 7. Let's explore logical conditions using 'if' statements. Replace the code
  *    added in 6, above, with this nested if code to make a logical AND
  *    condition that will light LED D4 only if both SW3 and SW4 are pressed:
