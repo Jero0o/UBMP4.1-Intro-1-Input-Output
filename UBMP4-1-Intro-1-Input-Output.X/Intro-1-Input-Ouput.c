@@ -35,38 +35,28 @@ int main(void)
         if(SW2 == 0)
         {
             LED3 = 1;
-            __delay_ms(100);
+            __delay_ms(150);
             LED4 = 1;
-            __delay_ms(100);
-            LED5 = 1;
-            __delay_ms(100);
+            __delay_ms(150);
             LED6 = 1;
-            __delay_ms(100);
+            __delay_ms(150);
+            LED5 = 1;
+            __delay_ms(150);
             LED3 = 0;
             __delay_ms(100);
             LED4 = 0;
             __delay_ms(100);
-            LED5 = 0;
-            __delay_ms(100);
             LED6 = 0;
             __delay_ms(100);
+            LED5 = 0;
+            __delay_ms(100);
         }
-        // Momentary button using if structure
-        if(SW3 == 0)
+                // Make a tone while SW5 is held
+        if(SW5 == 0)
         {
-            LED4 = 1;
+            BEEPER = !BEEPER;
+            __delay_us(567);
         }
-        else
-        {
-            LED4 = 0;
-        }
-
-        // Momentary button using while structure
-        while(SW4 == 0)
-        {
-            LED5 = 1;
-        }
-        LED5 = 0;
         // Add code for your Program Analysis and Programming Activities here:
      
         // Activate bootloader if SW1 is pressed.
@@ -89,7 +79,7 @@ int main(void)
  * 3. What voltage do you expect the microcontroller to output to LED D3 when
  *    the statement LED3 = 0; runs? What voltage do you expect the output to be
  *    when the statement LED3 = 1; runs?
- * There would not be enough voltage to run the LED3 = 0; to flash a light and LED3 = 1; will have enough voltage to flash a light.
+ * There would not be enough voltage to run the LED3 = 0; which is around 2-3 volts to flash a light and LED3 = 1; will have enough voltage to flash a light.
  *    You can confirm the output voltage with a voltmeter if you have access
  *    to one. If you tried that, did the voltage match your prediction?
  * 
@@ -167,7 +157,7 @@ int main(void)
 
  *    Test the code to ensure it works as expected. Does the order of the if
  *    conditions matter? (eg. swap the conditional checks for SW3 and SW4)
- * 
+ * The order of 'if' does not matter. No matter which button between SW3 and SW4 is pressed first as long as both buttons are pressed at the same time, then LED will still light up
  * 8. Next, replace the code from 7 with the following code which implements a
  *    logical AND conditional operator composed of two ampersands '&&':
  
@@ -184,7 +174,7 @@ int main(void)
  *    Does '&&' work the same way as the nested if structures? Can you think of
  *    at least one advantage of using a logical conditional operator instead of
  *    nested if structures?
- * 
+ * yes it does work the same way as the nested 'if' structure. The advantage of this is that its way more clear and has less coding needed to work.
  * 9. Replace the double ampersand '&&' with double vertical bars '||)' to make
  *    a logical OR conditional operator. Your code should look like this:
   
@@ -199,7 +189,7 @@ int main(void)
         }
 
  *    Describe the conditions under which LED4 turns on.
- * 
+ * the condition for LED4 to turn on is that either SW3 or SW4 can light it up the LED4. Meaning it is not needed for two buttons to be pressed for it to turn on 
  * 
  * Programming Activities
  * 
@@ -209,7 +199,7 @@ int main(void)
  *    Can the delay be made even longer? Try 1000 ms. How big can the delay be
  *    before MPLAB-X produces an error message? (Hint: can you think of a fast
  *    and efficient way of guessing an unknown number?)
- * 
+ * Yes the delay can be longer. Any number higher than 4205 will produce an error message when building the board.
  * 2. The '__delay_ms();' function only accepts integers as delay values. To
  *    make delays shorter than 1ms, specify a delay in microseconds using the
  *    '__delay_us();' function. You won't be able to see such short LED flashes
@@ -228,7 +218,7 @@ int main(void)
  *    Try changing the delay values in both of the __delay_us(); functions.
  *    Does the pitch of the tone increase or decrease if the delay value is
  *    made smaller?
- * 
+ * The pitch of the tone increases when the delay value is smaller and the pitch tone decreases when the delay value is higher
  * 3. This code demonstrates a more compact way of toggling the beeper output
  *    using a logical NOT operator '!'. Replace the code above, with this code:
  
@@ -244,7 +234,8 @@ int main(void)
  *    be in after this code runs? While one advantage of this method is smaller
  *    code, can you think of one or more disadvantages based on its output when
  *    the button is released?
- * 
+ * Either way, the state of the BEEPER output would be turned off.
+ * The disadvantage of this code is that there are no unique sounds and it kind of makes a echo sound.
  * 4. Using modified versions of the original SW2 'if' structure, create a
  *    program that makes a unique LED flashing pattern for each pushbutton.
  * 
