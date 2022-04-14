@@ -35,13 +35,13 @@ int main(void)
         if(SW2 == 0)
         {
             LED3 = 1;
-            __delay_ms(150);
+            __delay_ms(100);
             LED4 = 1;
-            __delay_ms(150);
-            LED6 = 1;
-            __delay_ms(150);
+            __delay_ms(100);
             LED5 = 1;
-            __delay_ms(150);
+            __delay_ms(100);
+            LED6 = 1;
+            __delay_ms(100);
             LED3 = 0;
             __delay_ms(100);
             LED4 = 0;
@@ -51,12 +51,15 @@ int main(void)
             LED5 = 0;
             __delay_ms(100);
         }
-                // Make a tone while SW5 is held
-        if(SW5 == 0)
+          if(SW3 = 0)
         {
-            BEEPER = !BEEPER;
-            __delay_us(567);
+            LED4 = 1;
         }
+          if(SW4 = 0)
+        {
+            LED4 = 0;
+        }
+          
         // Add code for your Program Analysis and Programming Activities here:
      
         // Activate bootloader if SW1 is pressed.
@@ -242,13 +245,14 @@ int main(void)
  *    Test each of your flashing patterns. Describe what happens when more than
  *    one button is held. Do all of the patterns try to flash the LEDs at the
  *    same time, or sequentially? Explain why this is.
- * 
+ * The LEDs flashes at the same time when two buttons are held at the same time. This is because both pattern are in the same 'if' structure.
+ * If it were two separate 'if' structures, then the LEDs will flash sequentially by order of code.
  * 5. Create a program that makes a different tone for each pushbutton.
  * 
  *    Test each tone by pressing each button individually. Next, press two or
  *    more buttons at the same time. Describe what the tone waveform would look
  *    like when more than one button is held.
- * 
+ * The tone waveform look like a blend of 3-4 sounds, which means the sound will try to meet in the middle and blend their sound to harmonize
  * 6. Use individual 'if' structures to simulate 'Start' and 'Stop' buttons for
  *    an industrial machine. LED D4 should turn on when SW3 is pressed, stay on
  *    even after SW3 is released, and turn off when SW4 is pressed. Test your
@@ -259,7 +263,8 @@ int main(void)
  *    of LED D4 compare between its normal on state following SW3 being pressed
  *    to this new state when both SW3 and SW4 are bing held? Can you explain
  *    why it changes?
- * 
+ * Yes LED D4 does stay on. The brightness of the LED D4 when SW3 and SW4 are being held is that the light much more dimmer than its normal state
+ * This is because the LED D4 flashes on and off so fast that it makes it very dim.
  * 8. As you can imagine, an industrial machine that is able to turn on even
  *    while its 'Stop' button is pressed represents a significant safety hazard.
  *    Using a logical conditional operator, modify the start-stop program from
