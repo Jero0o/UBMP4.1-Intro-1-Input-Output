@@ -51,15 +51,32 @@ int main(void)
             LED5 = 0;
             __delay_ms(100);
         }
-          if(SW3 = 0)
-        {
-            LED4 = 1;
-        }
-          if(SW4 = 0)
-        {
-            LED4 = 0;
-        }
-          
+        //activity 8
+/*          if(SW3 == SW4)
+ *        {
+ *          if(SW3 == 0)  
+ *           LED4 = 0;
+ *         }
+ *         if(SW4 = SW4)
+ *         { 
+ *           if(SW3 == 0)
+ *           LED4 = 1;
+ *         }
+ *         if(SW4 == 0)
+ *         {
+ *             LED4 = 0;
+ *         }
+ */
+            //activity 9
+ /*           if(SW5 == 0)
+  *          {
+  *              LED1 = 1;
+  *          }
+  *          else
+  *          {
+  *              LED1 = 0;
+  *          }
+  */
         // Add code for your Program Analysis and Programming Activities here:
      
         // Activate bootloader if SW1 is pressed.
